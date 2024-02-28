@@ -1,17 +1,13 @@
 from typing import Tuple
 
 from torch import Tensor
-from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 from torchvision.datasets import MNIST
-from torchvision.transforms import Compose, ToTensor
+from torchvision.transforms import ToTensor
 
-class MNISTDataset(Dataset):
-    train = MNIST(root='data', train=True, download=True)
-    test = MNIST(root='data', train=False, download=True)
-
+class DatasetMNIST(Dataset):
     def __init__(self, train=True, transforms = ToTensor()):
-        self.dataset = self.train if train else self.test
+        self.dataset =  MNIST(root='data', train=train, download=True)
         self.transform = transforms
 
     def __len__(self) -> int:

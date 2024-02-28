@@ -11,7 +11,6 @@ class Dimensions:
     output : int
 
 class Perceptron(nn.Module):
-
     def __init__(self, dimensions : Dimensions):
         super().__init__()
 
@@ -23,5 +22,5 @@ class Perceptron(nn.Module):
             nn.LogSoftmax(dim=1)
         )
 
-    def forward(self, input : Tensor) -> Tensor:
+    def forward(self, input) -> Tensor:
         return self.layers(input)
